@@ -1,0 +1,31 @@
+node_modules/
+.env
+.env.*
+*.log
+logs/
+
+# Ignorar datos operativos
+backend/data/orders*.json
+backend/data/*.bak*
+backend/data/*.backup*
+backend/data/*.csv
+backend/data/*.db
+
+# Permitir config base
+!backend/data/menu.json
+!backend/data/promo.json
+
+# Otros
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*.bak
+# Ignorar imágenes para evitar errores en Codex
+waiter-app/assets/menu/*.png
+waiter-app/assets/menu/*.jpg
+waiter-app/assets/menu/*.jpeg
+waiter-app/assets/menu/*.webp
+waiter-app/assets/menu/

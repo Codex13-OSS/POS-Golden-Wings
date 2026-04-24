@@ -1252,6 +1252,7 @@ app.get('/admin/export-items.csv', function(req, res) {
 });
 
 app.use("/kitchen", express.static(path.join(__dirname, "../kitchen-display")));
+app.use("/dashboard", express.static(path.join(__dirname, "../dashboard")));
 app.use("/", express.static(path.join(__dirname, "../waiter-app")));
 
 wss.on("connection", (ws) => {

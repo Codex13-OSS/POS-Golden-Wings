@@ -150,6 +150,21 @@ html[data-theme="light"] .top-bar {
   cursor: pointer;
 }
 
+.nav-dashboard,
+.theme-toggle {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(140deg, rgba(244, 196, 0, 0.24), rgba(212, 175, 55, 0.14));
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 210px 1fr 360px;

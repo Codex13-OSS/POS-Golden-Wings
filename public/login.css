@@ -1,7 +1,24 @@
 :root {
+  color-scheme: dark;
   font-family: "Segoe UI", sans-serif;
-  --primary: #e63946;
-  --secondary: #1d3557;
+  --primary: #f4c400;
+  --secondary: #111111;
+  --accent: #d4af37;
+  --bg: #111111;
+  --text-main: #ffffff;
+  --text-muted: #d1d5db;
+  --surface: rgba(255, 248, 231, 0.94);
+  --border: rgba(244, 196, 0, 0.35);
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #fff8e7;
+  --text-main: #111111;
+  --text-muted: #4b5563;
+  --surface: rgba(255, 248, 231, 0.96);
+  --border: rgba(212, 175, 55, 0.45);
 }
 
 * {
@@ -10,105 +27,98 @@
   padding: 0;
 }
 
-/* FONDO SAKURA - Apple Glass 2026 */
 body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/assets/sakura-tree.png') center/cover no-repeat fixed;
-  position: relative;
+  background: radial-gradient(circle at top, #2a2a2a 0%, #111111 60%, #0b0b0b 100%);
+  color: var(--text-main);
+  transition: background 0.25s ease, color 0.25s ease;
   overflow: hidden;
 }
 
-/* Capa glass overlay sutil */
-body::before {
-  content: '';
+html[data-theme="light"] body {
+  background: radial-gradient(circle at top, #ffffff 0%, #fff8e7 72%);
+}
+
+.login-theme-toggle {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.05) 0%, 
-    rgba(255, 255, 255, 0.02) 50%,
-    rgba(255, 255, 255, 0.05) 100%);
-  backdrop-filter: blur(0.3px);
-  -webkit-backdrop-filter: blur(0.3px);
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-weight: 700;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.orb-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
   z-index: 0;
-  pointer-events: none;
-}
-
-/* Contenedor de pétalos */
-#petals-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
   overflow: hidden;
 }
 
-/* Pétalo individual */
-.petal {
+.orb {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, 
-    rgba(255, 182, 193, 0.85) 0%, 
-    rgba(255, 105, 180, 0.65) 50%,
-    rgba(255, 20, 147, 0.45) 100%);
-  border-radius: 50% 0 50% 50%;
-  opacity: 0.75;
-  animation: fall linear infinite, sway ease-in-out infinite;
-  filter: blur(0.3px) drop-shadow(0 0 2px rgba(255, 182, 193, 0.5));
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.55;
+  animation: orbFloat 22s ease-in-out infinite;
 }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-20px) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.75;
-  }
-  90% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
+.orb-gold {
+  background: radial-gradient(circle, rgba(244, 196, 0, 0.7) 0%, rgba(244, 196, 0, 0.05) 70%);
 }
 
-@keyframes sway {
-  0%, 100% {
-    margin-left: 0;
-  }
-  25% {
-    margin-left: 25px;
-  }
-  75% {
-    margin-left: -25px;
-  }
+.orb-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0.04) 70%);
 }
 
-/* Estructura original - MANTENIDA */
+.orb-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.48) 0%, rgba(168, 85, 247, 0.04) 70%);
+}
+
+.orb-green {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(16, 185, 129, 0.04) 70%);
+}
+
+.orb-warm {
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.48) 0%, rgba(217, 119, 6, 0.04) 70%);
+}
+
+.orb-1 { width: 360px; height: 360px; top: -80px; left: -70px; animation-delay: 0s; }
+.orb-2 { width: 260px; height: 260px; top: 12%; right: 10%; animation-delay: 2s; }
+.orb-3 { width: 320px; height: 320px; bottom: -100px; left: 18%; animation-delay: 4s; }
+.orb-4 { width: 220px; height: 220px; bottom: 18%; right: -40px; animation-delay: 7s; }
+.orb-5 { width: 180px; height: 180px; top: 45%; left: 45%; animation-delay: 5s; }
+.orb-6 { width: 260px; height: 260px; bottom: -50px; right: 24%; animation-delay: 8s; }
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  25% { transform: translate3d(14px, -22px, 0) scale(1.06); }
+  50% { transform: translate3d(-12px, 18px, 0) scale(0.96); }
+  75% { transform: translate3d(10px, -14px, 0) scale(1.04); }
+}
+
 .login {
-  position: relative;
-  z-index: 2;
-  width: min(420px, 92vw);
+  width: min(460px, 92vw);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Logo con efecto sutil */
 .logo {
-  width: min(180px, 60vw);
+  width: min(200px, 62vw);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
@@ -119,40 +129,38 @@ body::before {
   transform: scale(1.03);
 }
 
-/* Glassmorphism en el login card */
 .login-card {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  gap: 18px;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 248, 231, 0.26);
+  border: 1px solid var(--border);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  animation: float 6s ease-in-out infinite;
+    0 20px 40px var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  position: relative;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+.login-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
 }
 
-/* Campos del formulario */
 .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 14px;
-  color: #333;
+  color: #222;
 }
 
 .field span {
@@ -160,39 +168,36 @@ body::before {
   margin-left: 4px;
 }
 
-/* Inputs con glass effect */
 .field input {
-  padding: 14px 16px;
+  padding: 15px 16px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.84);
   font-size: 16px;
   color: #1a1a1a;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
 .field input:focus {
   outline: none;
   border-color: var(--primary);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
-/* Botón primario (Entrar) con glass */
 .primary {
-  padding: 16px;
-  border-radius: 14px;
+  padding: 17px;
+  border-radius: 16px;
   border: none;
-  background: linear-gradient(135deg, var(--primary) 0%, #d62839 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--primary) 0%, #b98e1d 100%);
+  color: #111111;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 
-    0 4px 15px rgba(230, 57, 70, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 15px rgba(212, 175, 55, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   position: relative;
   overflow: hidden;
 }
@@ -211,8 +216,8 @@ body::before {
 .primary:hover {
   transform: translateY(-2px);
   box-shadow: 
-    0 6px 20px rgba(230, 57, 70, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 6px 20px rgba(212, 175, 55, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .primary:hover::before {
@@ -225,10 +230,10 @@ body::before {
 
 /* Botón secundario (APP COCINA) con glass */
 .secondary {
-  padding: 14px;
-  border-radius: 14px;
+  padding: 15px;
+  border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.36);
   color: var(--secondary);
   font-size: 16px;
   font-weight: 700;
@@ -247,7 +252,7 @@ body::before {
 /* Mensaje de error */
 .error {
   min-height: 20px;
-  color: #e63946;
+  color: #111111;
   font-size: 13px;
   text-align: center;
   font-weight: 500;

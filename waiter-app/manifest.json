@@ -1,10 +1,10 @@
 {
-  "name": "Deku Ramen POS",
-  "short_name": "Deku POS",
+  "name": "Golden Wings POS",
+  "short_name": "Golden POS",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#f6f2ed",
-  "theme_color": "#e63946",
+  "background_color": "#FFF8E7",
+  "theme_color": "#D4AF37",
   "icons": [
     {
       "src": "/assets/menu/ramen_deku.png",

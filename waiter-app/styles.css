@@ -1,9 +1,9 @@
 :root {
   color-scheme: light;
   font-family: "Segoe UI", sans-serif;
-  --primary: #d4af37;
+  --primary: #f4c400;
   --secondary: #111111;
-  --accent: #b91c1c;
+  --accent: #d4af37;
   --bg: #fff8e7;
   --card: #ffffff;
   --shadow: rgba(0, 0, 0, 0.1);
@@ -176,14 +176,14 @@ body {
 }
 
 .active-panel-action.action-pending {
-  background: #f39c12;
-  color: #fff;
+  background: var(--accent);
+  color: #111111;
   cursor: default;
 }
 
 .active-panel-action.action-ready {
-  background: #2ecc71;
-  color: #fff;
+  background: var(--primary);
+  color: #111111;
 }
 
 .active-panel-action.action-pay {

@@ -1,8 +1,8 @@
 :root {
   font-family: "Segoe UI", sans-serif;
-  --primary: #d4af37;
+  --primary: #f4c400;
   --secondary: #111111;
-  --accent: #b91c1c;
+  --accent: #d4af37;
   --bg: #fff8e7;
   --text-main: #111111;
   --text-muted: #4b5563;
@@ -154,7 +154,7 @@ body {
 /* Mensaje de error */
 .error {
   min-height: 20px;
-  color: #e63946;
+  color: #111111;
   font-size: 13px;
   text-align: center;
   font-weight: 500;

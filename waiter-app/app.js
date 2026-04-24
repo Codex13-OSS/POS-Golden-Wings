@@ -1,6 +1,6 @@
 const state = {
   menu: [],
-  activeCategory: "ramen",
+  activeCategory: "menu",
   cart: [],
   promo: null,
   note: "",
@@ -16,11 +16,7 @@ const state = {
 };
 
 const categoryTitles = {
-  ramen: "Ramen",
-  extras: "Extras",
-  sides: "Acompañamientos",
-  drinks: "Bebidas",
-  desserts: "Postres"
+  menu: "Menú"
 };
 
 const categoryButtons = document.querySelectorAll(".category");
@@ -254,6 +250,10 @@ function renderProducts() {
     const image = document.createElement("img");
     image.src = assetUrl(`/assets/menu/${product.image}`);
     image.alt = product.name;
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      image.style.display = "none";
+    });
 
     const name = document.createElement("h3");
     name.textContent = product.name;
@@ -268,22 +268,8 @@ function renderProducts() {
 
     card.append(image, name, price);
 
-    if (product.category === "ramen") {
-      const button = document.createElement("button");
-      button.className = "primary";
-      button.textContent = "Ordenar";
-      button.addEventListener("click", () => openWizard(product));
-      card.appendChild(button);
-    } else if (state.appendOrderId && product.category === "extras") {
-      const button = document.createElement("button");
-      button.className = "primary";
-      button.textContent = "Agregar a ramen";
-      button.addEventListener("click", () => adjustCartItem(product.id, 1));
-      card.appendChild(button);
-    } else {
-      const qtyControl = buildQtyControl(product.id, getCartQty(product.id));
-      card.appendChild(qtyControl);
-    }
+    const qtyControl = buildQtyControl(product.id, getCartQty(product.id));
+    card.appendChild(qtyControl);
 
     productGrid.appendChild(card);
   });
@@ -1186,42 +1172,6 @@ async function sendOrder() {
     return appendItemsToOrder();
   }
 
-  if (orderFlowStep === 0) {
-    orderFlowStep = 1;
-    state.activeCategory = "sides";
-    renderCategories();
-    renderProducts();
-    updateOrderFlowUI();
-    try {
-      var el = document.getElementById('categoryTitle');
-      if (el && el.scrollIntoView) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } catch (e) {
-      try { window.scrollTo(0, 0); } catch (_) {}
-    }
-    return;
-  }
-  if (orderFlowStep === 1) {
-    orderFlowStep = 2;
-    state.activeCategory = "drinks";
-    renderCategories();
-    renderProducts();
-    updateOrderFlowUI();
-    try {
-      var el2 = document.getElementById('categoryTitle');
-      if (el2 && el2.scrollIntoView) {
-        el2.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } catch (e) {
-      try { window.scrollTo(0, 0); } catch (_) {}
-    }
-    return;
-  }
   if (!tableSelect || !tableSelect.value) {
     setStatus("Selecciona mesa o Para llevar.");
     return;
@@ -2210,8 +2160,8 @@ function startAppendOrder(order) {
   if (tableSelect) {
     tableSelect.value = order.table || "";
   }
-  orderFlowStep = 2;
-  state.activeCategory = "sides";
+  orderFlowStep = 0;
+  state.activeCategory = "menu";
   closeHistoryModal();
   renderCategories();
   renderProducts();
@@ -2515,23 +2465,23 @@ function updateOrderFlowUI() {
     orderNextButton.style.display = "none";
   }
   if (orderFlowStep === 0) {
-    sendOrderButton.textContent = "ORDENAR";
+    sendOrderButton.textContent = "ENVIAR A COCINA";
     if (orderPrompt) {
       orderPrompt.textContent = "";
     }
     return;
   }
   if (orderFlowStep === 1) {
-    sendOrderButton.textContent = "ORDENAR";
+    sendOrderButton.textContent = "ENVIAR A COCINA";
     if (orderPrompt) {
-      orderPrompt.textContent = "¿Desean acompañamientos?";
+      orderPrompt.textContent = "";
     }
     return;
   }
   if (orderFlowStep === 2) {
     sendOrderButton.textContent = "ENVIAR A COCINA";
     if (orderPrompt) {
-      orderPrompt.textContent = "¿Desean bebidas?";
+      orderPrompt.textContent = "";
     }
   }
 }

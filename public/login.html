@@ -9,35 +9,43 @@
 <body>
   <div class="orb-layer" aria-hidden="true">
     <span class="orb orb-gold orb-1"></span>
-    <span class="orb orb-gold orb-2"></span>
+    <span class="orb orb-ivory orb-2"></span>
     <span class="orb orb-blue orb-3"></span>
     <span class="orb orb-purple orb-4"></span>
     <span class="orb orb-green orb-5"></span>
     <span class="orb orb-warm orb-6"></span>
+    <span class="orb orb-gold orb-7"></span>
+    <span class="orb orb-blue orb-8"></span>
   </div>
-  <button type="button" class="theme-toggle login-theme-toggle" data-theme-toggle></button>
-  <main class="login">
-    <div class="brand-lockup" aria-label="Golden Wings">
-      <div class="brand-badge">GW</div>
-      <div class="brand-copy">
-        <h1>Golden Wings</h1>
-        <p>POS Executive Suite</p>
+
+  <main class="login-shell">
+    <button type="button" class="theme-toggle login-theme-toggle" data-theme-toggle></button>
+
+    <section class="login" aria-label="Acceso Golden Wings">
+      <div class="brand-lockup" aria-label="Golden Wings">
+        <div class="brand-badge">GW</div>
+        <div class="brand-copy">
+          <h1>Golden Wings</h1>
+          <p>POS Executive Suite</p>
+        </div>
       </div>
-    </div>
-    <form id="loginForm" class="login-card">
-      <label class="field">
-        <span>Usuario</span>
-        <input id="username" type="text" autocomplete="username" required />
-      </label>
-      <label class="field">
-        <span>Contraseña</span>
-        <input id="password" type="password" autocomplete="current-password" required />
-      </label>
-      <button type="submit" class="primary">Entrar</button>
-      <button type="button" id="kitchenButton" class="secondary">APP COCINA</button>
-      <p id="loginError" class="error"></p>
-    </form>
+
+      <form id="loginForm" class="login-card">
+        <label class="field">
+          <span>Usuario</span>
+          <input id="username" type="text" autocomplete="username" required />
+        </label>
+        <label class="field">
+          <span>Contraseña</span>
+          <input id="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button type="submit" class="primary">Entrar</button>
+        <button type="button" id="kitchenButton" class="secondary">APP COCINA</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
   </main>
+
   <script src="/theme.js"></script>
   <script src="/login.js"></script>
 </body>

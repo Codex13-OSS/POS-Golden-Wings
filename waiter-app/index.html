@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deku Ramen POS</title>
+  <title>Golden Wings POS</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css?v=20260226-1" />
 </head>
 <body>
   <header class="top-bar">
     <div class="brand">
-      <img src="/assets/brand/logo.png" alt="Deku Ramen" class="logo" />
+      <img src="/assets/brand/logo.png" alt="Golden Wings" class="logo" />
       <div class="brand-text">
-        <div class="title">Deku Ramen POS</div>
+        <div class="title">Golden Wings POS</div>
         <div class="subtitle">Comanda rápida · Touch-first</div>
       </div>
     </div>
@@ -20,20 +20,18 @@
       <label for="backendUrl">Backend</label>
       <input id="backendUrl" type="text" placeholder="http://localhost:3000" />
       <button id="saveBackend">Guardar</button>
+      <a href="/dashboard" class="ghost nav-dashboard">Dashboard</a>
+      <button type="button" class="ghost theme-toggle" data-theme-toggle></button>
     </div>
   </header>
 
   <main class="layout">
     <aside class="categories" id="categoryList">
-      <button class="category active" data-category="ramen">Ramen</button>
-      <button class="category" data-category="extras">Extras</button>
-      <button class="category" data-category="sides">Acompañamientos</button>
-      <button class="category" data-category="drinks">Bebidas</button>
-      <button class="category" data-category="desserts">Postres</button>
+      <button class="category active" data-category="menu">Menú</button>
     </aside>
 
     <section class="products">
-      <h2 id="categoryTitle">Ramen</h2>
+      <h2 id="categoryTitle">Menú</h2>
       <div id="productGrid" class="product-grid"></div>
     </section>
 
@@ -67,9 +65,9 @@
           <strong id="total">$0</strong>
         </div>
       </div>
-      <div class="cart-item">
-        <div id="promoStatus">PROMO 2x1: INACTIVA</div>
-        <button id="promoToggle" class="ghost">Activar override</button>
+      <div class="cart-item" aria-hidden="true" style="display:none">
+        <div id="promoStatus">Descuentos automáticos: desactivados</div>
+        <button id="promoToggle" class="ghost" disabled>No disponible en demo</button>
       </div>
       <div class="cart-item">
         <button id="orderFlowButton" class="ghost">ORDENAR</button>
@@ -85,7 +83,7 @@
   <section id="ramenWizard" class="modal hidden">
     <div class="modal-content">
       <header>
-        <h2 id="wizardTitle">Configura tu ramen</h2>
+        <h2 id="wizardTitle">Configura tu producto</h2>
         <button id="closeWizard" class="ghost">Cerrar</button>
       </header>
       <div class="wizard-step" id="wizardStep"></div>
@@ -161,6 +159,7 @@
     </div>
   </section>
 
+  <script src="/theme.js"></script>
   <script src="config.js?v=20260226-1"></script>
   <script src="app.js?v=20260226-1"></script>
 </body>

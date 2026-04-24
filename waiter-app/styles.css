@@ -53,6 +53,12 @@ html[data-theme="light"] {
   padding: 0;
 }
 
+
+:where(button, a, input, select, textarea):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(244, 196, 0, 0.2);
+}
+
 body {
   background:
     radial-gradient(1100px 520px at 0% -10%, rgba(244, 196, 0, 0.14), transparent 62%),
@@ -264,7 +270,7 @@ html[data-theme="light"] .top-bar {
 }
 
 .category.active {
-  background: linear-gradient(145deg, #ffe07a 0%, #f4c400 46%, #c79224 100%);
+  background: linear-gradient(145deg, #ffde78 0%, #efbf1f 46%, #be8b1f 100%);
   color: #15120a;
   border-color: rgba(255, 227, 147, 0.7);
 }
@@ -658,7 +664,7 @@ html[data-theme="light"] .top-bar {
   font-weight: 800;
   border: 1px solid rgba(255, 228, 149, 0.76);
   border-radius: var(--radius-md);
-  background: linear-gradient(145deg, #ffe17e 0%, #f4c400 42%, #bf8d1d 100%);
+  background: linear-gradient(145deg, #ffdd77 0%, #efbd21 42%, #ba871f 100%);
   color: #15120a;
   cursor: pointer;
   box-shadow: 0 16px 28px rgba(171, 123, 14, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.44);

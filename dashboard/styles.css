@@ -44,6 +44,11 @@ html[data-theme="light"] {
   box-sizing: border-box;
 }
 
+:where(button, a):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(244, 196, 0, 0.2);
+}
+
 body {
   margin: 0;
   font-family: "Inter", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
@@ -203,7 +208,7 @@ html[data-theme="light"] body {
 }
 
 .back-link {
-  background: linear-gradient(145deg, #ffe27f 0%, var(--yellow) 44%, #bd8d1d 100%);
+  background: linear-gradient(145deg, #ffde78 0%, #efbf1f 44%, #bb891f 100%);
   color: #181308;
   border-color: rgba(255, 230, 149, 0.78);
   box-shadow: 0 14px 24px rgba(171, 123, 14, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);

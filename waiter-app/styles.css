@@ -452,6 +452,14 @@ html[data-theme="light"] .top-bar {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.cart h2 {
+  font-size: 24px;
+  letter-spacing: -0.02em;
 }
 
 .cart-items {
@@ -712,6 +720,7 @@ html[data-theme="light"] .top-bar {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  border: 1px solid var(--border);
 }
 
 .modal-content header {

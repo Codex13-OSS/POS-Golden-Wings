@@ -1,6 +1,6 @@
-# Deku Ramen POS Beta (LAN)
+# Golden Wings POS Beta (LAN)
 
-Sistema POS en red local (LAN) para Deku Ramen con backend Node.js + WebSocket, Kitchen Display y Waiter App PWA.
+Sistema POS en red local (LAN) para Golden Wings con backend Node.js + WebSocket, Kitchen Display y Waiter App PWA.
 
 ## Requisitos
 - Node.js 18+ (o 16+ con soporte de fetch en el navegador)

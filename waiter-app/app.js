@@ -844,23 +844,23 @@ function renderPromoStatus() {
     promoToggle.classList.add("promo-toggle");
   }
   if (!state.promo) {
-    promoStatus.textContent = "PROMO 2x1: INACTIVA";
+    promoStatus.textContent = "Descuentos automáticos: desactivados";
     if (promoToggle) {
-      promoToggle.textContent = "2x1";
+      promoToggle.textContent = "Desactivado";
       promoToggle.classList.remove("promo-toggle-active");
     }
     return;
   }
   if (state.promo.promoActive) {
-    const label = state.promo.promoSource === "auto_thursday"
-      ? "PROMO 2x1: ACTIVA (AUTO JUEVES)"
-      : "PROMO 2x1: ACTIVA (OVERRIDE)";
+    const label = state.promo.promoSource === "manual_override"
+      ? "Descuentos automáticos: activados manualmente"
+      : "Descuentos automáticos: activados";
     promoStatus.textContent = label;
   } else {
-    promoStatus.textContent = "PROMO 2x1: INACTIVA";
+    promoStatus.textContent = "Descuentos automáticos: desactivados";
   }
   if (promoToggle) {
-    promoToggle.textContent = "2x1";
+    promoToggle.textContent = "Desactivado";
     promoToggle.classList.toggle("promo-toggle-active", state.promo.manualOverrideEnabled);
   }
 }
@@ -870,13 +870,13 @@ async function fetchPromoStatus() {
   try {
     const response = await apiGet("/api/promo");
     if (!response.ok) {
-      throw new Error("No se pudo cargar promo");
+      throw new Error("No se pudo cargar descuentos automáticos");
     }
     state.promo = await response.json();
     renderPromoStatus();
   } catch (error) {
     console.error(error);
-    promoStatus.textContent = "PROMO 2x1: INACTIVA";
+    promoStatus.textContent = "Descuentos automáticos: desactivados";
   }
 }
 
@@ -891,7 +891,7 @@ async function togglePromoOverride() {
     });
     if (!response.ok) {
       const data = await response.json().catch(() => null);
-      const message = data && data.error ? data.error : "No se pudo actualizar promo.";
+      const message = data && data.error ? data.error : "No se pudo actualizar descuentos automáticos.";
       alert(message);
       return;
     }
@@ -899,7 +899,7 @@ async function togglePromoOverride() {
     renderPromoStatus();
   } catch (error) {
     console.error(error);
-    alert("No se pudo actualizar promo.");
+    alert("No se pudo actualizar descuentos automáticos.");
   }
 }
 
@@ -1556,12 +1556,12 @@ function renderHistoryTicket(order) {
   let promoLine = "";
   if (order.promoApplied) {
     const promoDiscount = order.promoDiscount || (order.totals.subtotal - order.totals.total);
-    promoLine = "<div><br>PROMO 2x1 JUEVES APLICADA</div>";
-    promoLine += `<div>Descuento (ramen más económico): -${formatPrice(promoDiscount)}</div><br>`;
+    promoLine = "<div><br>DESCUENTO AUTOMÁTICO APLICADO</div>";
+    promoLine += `<div>Descuento aplicado: -${formatPrice(promoDiscount)}</div><br>`;
   }
 
   historyTicket.innerHTML = `
-    <strong>DEKU RAMEN</strong>
+    <strong>GOLDEN WINGS</strong>
     <div>${buildTableLabel(order.table)} · ${formatTime(order.createdAt)} · ${order.id.split("-").slice(-1)[0]}</div>
     <div>Estado: ${statusLabel}</div>
     ${cancelled ? `<div><strong>CANCELADA</strong></div>` : ""}

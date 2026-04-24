@@ -17,6 +17,7 @@ const MENU_PATH = path.join(DATA_DIR, "menu.json");
 const ORDERS_PATH = path.join(DATA_DIR, "orders.json");
 const PROMO_PATH = path.join(DATA_DIR, "promo.json");
 const PROMO_TZ = "America/Mexico_City";
+const DEMO_PROMOS_ENABLED = false;
 const readyTimers = new Map();
 const PUBLIC_DIR = path.join(__dirname, "../public");
 const SESSION_COOKIE = "mesero_session";
@@ -758,9 +759,9 @@ function isThursdayNow(now = new Date()) {
 
 function buildPromoPayload(promoState, now = new Date()) {
   const isThursday = isThursdayNow(now);
-  const manualOverrideEnabled = Boolean(promoState.manualOverrideEnabled);
-  const promoActive = isThursday || manualOverrideEnabled;
-  const promoSource = promoActive ? (isThursday ? "auto_thursday" : "manual_override") : null;
+  const manualOverrideEnabled = DEMO_PROMOS_ENABLED && Boolean(promoState.manualOverrideEnabled);
+  const promoActive = false;
+  const promoSource = null;
   return {
     isThursdayNow: isThursday,
     manualOverrideEnabled,
@@ -773,6 +774,9 @@ function buildPromoPayload(promoState, now = new Date()) {
 }
 
 function calculatePromoDiscount(items) {
+  if (!DEMO_PROMOS_ENABLED) {
+    return 0;
+  }
   const menu = loadMenu();
   const menuById = new Map(menu.products.map((product) => [product.id, product]));
   const ramenBasePrices = [];
@@ -1166,7 +1170,7 @@ function handleOrdersCsvExport(req, res) {
     var yyyy = String(now.getFullYear());
     var mm = String(now.getMonth() + 1).padStart(2, '0');
     var dd = String(now.getDate()).padStart(2, '0');
-    var fname = 'deku_orders_' + yyyy + '-' + mm + '-' + dd + '.csv';
+    var fname = 'golden_wings_orders_' + yyyy + '-' + mm + '-' + dd + '.csv';
 
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader('Content-Disposition', 'attachment; filename="' + fname + '"');
@@ -1236,7 +1240,7 @@ app.get('/admin/export-items.csv', function(req, res) {
     var yyyy = String(now.getFullYear());
     var mm = String(now.getMonth() + 1).padStart(2, '0');
     var dd = String(now.getDate()).padStart(2, '0');
-    var fname = 'deku_order_items_' + yyyy + '-' + mm + '-' + dd + '.csv';
+    var fname = 'golden_wings_order_items_' + yyyy + '-' + mm + '-' + dd + '.csv';
 
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader('Content-Disposition', 'attachment; filename="' + fname + '"');
@@ -1248,6 +1252,7 @@ app.get('/admin/export-items.csv', function(req, res) {
 });
 
 app.use("/kitchen", express.static(path.join(__dirname, "../kitchen-display")));
+app.use("/dashboard", express.static(path.join(__dirname, "../dashboard")));
 app.use("/", express.static(path.join(__dirname, "../waiter-app")));
 
 wss.on("connection", (ws) => {

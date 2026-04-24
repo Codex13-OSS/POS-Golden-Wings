@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deku Ramen | Cocina</title>
+  <title>Golden Wings | Cocina</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="top-bar">
     <div class="brand">
-      <img src="/assets/brand/logo.png" alt="Deku Ramen" class="logo" />
-      <h1>Kitchen Display · Deku Ramen</h1>
+      <img src="/assets/brand/logo.png" alt="Golden Wings" class="logo" />
+      <h1>Kitchen Display · Golden Wings</h1>
     </div>
-    <span id="connectionStatus">Conectando...</span>
+    <div class="top-actions">
+      <button type="button" class="theme-toggle" data-theme-toggle></button>
+      <span id="connectionStatus">Conectando...</span>
+    </div>
   </header>
 
   <main>
     <div id="orders" class="orders"></div>
   </main>
 
+  <script src="/theme.js"></script>
   <script src="kitchen.js"></script>
 </body>
 </html>

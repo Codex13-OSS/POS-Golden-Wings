@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Wings | Dashboard Ejecutivo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <header class="dashboard-header card">
+      <div class="brand">
+        <img src="/assets/brand/logo.png" alt="Golden Wings" class="brand-logo" />
+        <div>
+          <span class="hero-chip">Live Mock Data</span>
+          <h1>Dashboard Ejecutivo</h1>
+          <p>Control de ventas y operación en tiempo real</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div id="todayDate" class="today-date"></div>
+        <div class="header-cta">
+          <button type="button" class="theme-toggle" data-theme-toggle></button>
+          <a class="back-link" href="/">Volver al POS</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="kpi-grid" id="kpiGrid"></section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2>Corte de caja</h2>
+        <div class="cut-summary" id="cashClosing"></div>
+      </article>
+
+      <article class="card">
+        <h2>Ventas por método de pago</h2>
+        <div class="payment-bars" id="paymentMethods"></div>
+      </article>
+    </section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2>Productos más vendidos</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Unidades</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="topProducts"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Ventas por hora</h2>
+        <div class="hour-bars" id="salesByHour"></div>
+      </article>
+    </section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2>Operación del restaurante</h2>
+        <div class="ops-grid" id="operationCards"></div>
+      </article>
+
+      <article class="card insight">
+        <h2>Insight comercial</h2>
+        <p id="businessInsight"></p>
+      </article>
+    </section>
+  </div>
+
+  <script src="/theme.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,11 +1,14 @@
 :root {
   color-scheme: light;
   font-family: "Segoe UI", sans-serif;
-  --primary: #e63946;
-  --secondary: #1d3557;
-  --bg: #f6f2ed;
+  --primary: #f4c400;
+  --secondary: #111111;
+  --accent: #d4af37;
+  --bg: #fff8e7;
   --card: #ffffff;
   --shadow: rgba(0, 0, 0, 0.1);
+  --text-main: #111111;
+  --text-muted: #4b5563;
 }
 
 * {
@@ -16,7 +19,7 @@
 
 body {
   background: var(--bg);
-  color: #222;
+  color: var(--text-main);
 }
 
 .top-bar {
@@ -48,7 +51,7 @@ body {
 .brand-text .subtitle {
   font-size: 12px;
   opacity: 0.75;
-  color: #555;
+  color: var(--text-muted);
 }
 
 .top-bar img[src*="logo.png"] {
@@ -173,18 +176,18 @@ body {
 }
 
 .active-panel-action.action-pending {
-  background: #f39c12;
-  color: #fff;
+  background: var(--accent);
+  color: #111111;
   cursor: default;
 }
 
 .active-panel-action.action-ready {
-  background: #2ecc71;
-  color: #fff;
+  background: var(--primary);
+  color: #111111;
 }
 
 .active-panel-action.action-pay {
-  background: #1d3557;
+  background: var(--secondary);
   color: #fff;
 }
 

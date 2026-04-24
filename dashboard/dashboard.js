@@ -86,10 +86,10 @@ function renderPaymentMethods() {
   if (!container) return;
   container.innerHTML = mockData.paymentMethods
     .map(
-      (item) => `
+      (item, index) => `
       <div class="bar-item">
         <div class="bar-label"><span>${item.name}</span><strong>${item.percent}%</strong></div>
-        <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${item.percent}%"></div></div>
+        <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${item.percent}%; --bar-delay:${index * 0.06}s"></div></div>
       </div>
     `
     )
@@ -101,12 +101,12 @@ function renderSalesByHour() {
   if (!container) return;
   const maxValue = Math.max(...mockData.salesByHour.map((item) => item.amount), 1);
   container.innerHTML = mockData.salesByHour
-    .map((item) => {
+    .map((item, index) => {
       const width = Math.round((item.amount / maxValue) * 100);
       return `
         <div class="bar-item">
           <div class="bar-label"><span>${item.hour}</span><strong>${formatMoney(item.amount)}</strong></div>
-          <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${width}%"></div></div>
+          <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${width}%; --bar-delay:${index * 0.05}s"></div></div>
         </div>
       `;
     })

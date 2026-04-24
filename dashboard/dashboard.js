@@ -1,11 +1,11 @@
 const mockData = {
   kpis: [
-    { label: "Venta del día", value: "$4,850" },
-    { label: "Efectivo", value: "$2,750" },
-    { label: "Digital", value: "$2,100" },
-    { label: "Órdenes pagadas", value: "42" },
-    { label: "Ticket promedio", value: "$115" },
-    { label: "Productos vendidos", value: "58" }
+    { label: "Venta del día", value: "$4,850", tone: "gold" },
+    { label: "Efectivo", value: "$2,750", tone: "green" },
+    { label: "Digital", value: "$2,100", tone: "blue" },
+    { label: "Órdenes pagadas", value: "42", tone: "orange" },
+    { label: "Ticket promedio", value: "$115", tone: "purple" },
+    { label: "Productos vendidos", value: "58", tone: "orange" }
   ],
   cashClosing: {
     total: "$4,850",
@@ -20,22 +20,22 @@ const mockData = {
     { name: "Virutas de pollo", units: 16, total: "$1,520" }
   ],
   paymentMethods: [
-    { name: "Efectivo", percent: 57 },
-    { name: "Digital", percent: 43 }
+    { name: "Efectivo", percent: 57, tone: "green" },
+    { name: "Digital", percent: 43, tone: "blue" }
   ],
   salesByHour: [
-    { hour: "14:00", amount: 350 },
-    { hour: "15:00", amount: 620 },
-    { hour: "16:00", amount: 780 },
-    { hour: "17:00", amount: 1100 },
-    { hour: "18:00", amount: 1350 },
-    { hour: "19:00", amount: 650 }
+    { hour: "14:00", amount: 350, tone: "purple" },
+    { hour: "15:00", amount: 620, tone: "blue" },
+    { hour: "16:00", amount: 780, tone: "orange" },
+    { hour: "17:00", amount: 1100, tone: "gold" },
+    { hour: "18:00", amount: 1350, tone: "green" },
+    { hour: "19:00", amount: 650, tone: "purple" }
   ],
   operation: [
-    { label: "Órdenes activas", value: "3" },
-    { label: "En cocina", value: "2" },
-    { label: "Listas para entregar", value: "1" },
-    { label: "Tiempo promedio de preparación", value: "12 min" }
+    { label: "Órdenes activas", value: "3", tone: "orange" },
+    { label: "En cocina", value: "2", tone: "blue" },
+    { label: "Listas para entregar", value: "1", tone: "green" },
+    { label: "Tiempo promedio de preparación", value: "12 min", tone: "purple" }
   ],
   insight:
     "Hoy las alitas representan el 37% de las unidades vendidas. Recomendación: mantener inventario fuerte para horas pico."
@@ -49,7 +49,7 @@ function renderKPIs() {
   const container = document.getElementById("kpiGrid");
   if (!container) return;
   container.innerHTML = mockData.kpis
-    .map((item) => `<article class="kpi"><h3>${item.label}</h3><p>${item.value}</p></article>`)
+    .map((item) => `<article class="kpi kpi--${item.tone || "gold"}"><h3>${item.label}</h3><p>${item.value}</p></article>`)
     .join("");
 }
 
@@ -61,7 +61,7 @@ function renderCashClosing() {
     <div class="cut-row"><span>Efectivo esperado</span><strong>${mockData.cashClosing.cash}</strong></div>
     <div class="cut-row"><span>Digital esperado</span><strong>${mockData.cashClosing.digital}</strong></div>
     <div class="cut-row"><span>Diferencia</span><strong>${mockData.cashClosing.diff}</strong></div>
-    <span class="cut-badge">Estado: ${mockData.cashClosing.status}</span>
+    <span class="cut-badge cut-badge--green">Estado: ${mockData.cashClosing.status}</span>
   `;
 }
 
@@ -87,9 +87,9 @@ function renderPaymentMethods() {
   container.innerHTML = mockData.paymentMethods
     .map(
       (item) => `
-      <div>
+      <div class="bar-item">
         <div class="bar-label"><span>${item.name}</span><strong>${item.percent}%</strong></div>
-        <div class="track"><div class="fill" style="width:${item.percent}%"></div></div>
+        <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${item.percent}%"></div></div>
       </div>
     `
     )
@@ -104,9 +104,9 @@ function renderSalesByHour() {
     .map((item) => {
       const width = Math.round((item.amount / maxValue) * 100);
       return `
-        <div>
+        <div class="bar-item">
           <div class="bar-label"><span>${item.hour}</span><strong>${formatMoney(item.amount)}</strong></div>
-          <div class="track"><div class="fill" style="width:${width}%"></div></div>
+          <div class="track"><div class="fill fill--${item.tone || "gold"}" style="width:${width}%"></div></div>
         </div>
       `;
     })
@@ -117,7 +117,7 @@ function renderOperationCards() {
   const container = document.getElementById("operationCards");
   if (!container) return;
   container.innerHTML = mockData.operation
-    .map((item) => `<article class="ops-card"><h3>${item.label}</h3><p>${item.value}</p></article>`)
+    .map((item) => `<article class="ops-card ops-card--${item.tone || "gold"}"><h3>${item.label}</h3><p>${item.value}</p></article>`)
     .join("");
 }
 

@@ -29,6 +29,13 @@ html[data-theme="light"] {
   --border: rgba(17, 17, 17, 0.08);
 }
 
+html[data-theme="light"] .products,
+html[data-theme="light"] .cart,
+html[data-theme="light"] .active-panel,
+html[data-theme="light"] .product-card {
+  background: rgba(255, 255, 255, 0.86);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -150,21 +157,6 @@ html[data-theme="light"] .top-bar {
   cursor: pointer;
 }
 
-.nav-dashboard,
-.theme-toggle {
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: linear-gradient(140deg, rgba(244, 196, 0, 0.24), rgba(212, 175, 55, 0.14));
-  color: var(--text-main);
-  font-weight: 700;
-}
-
-.theme-toggle {
-  cursor: pointer;
-}
-
 .layout {
   display: grid;
   grid-template-columns: 210px 1fr 360px;
@@ -196,15 +188,17 @@ html[data-theme="light"] .top-bar {
 }
 
 .products {
-  background: var(--surface-elevated);
+  background: rgba(33, 33, 33, 0.82);
   border-radius: var(--radius-lg);
   padding: 18px;
   box-shadow: 0 16px 30px var(--shadow);
   border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .active-panel {
-  background: var(--surface-elevated);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   padding: 14px;
   box-shadow: 0 12px 28px var(--shadow);
@@ -290,7 +284,7 @@ html[data-theme="light"] .top-bar {
 }
 
 .product-card {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-lg);
   box-shadow: 0 14px 28px var(--shadow);
   padding: 14px;
@@ -301,6 +295,7 @@ html[data-theme="light"] .top-bar {
   text-align: center;
   border: 1px solid var(--border);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(10px);
 }
 
 .product-card:hover {
@@ -351,7 +346,7 @@ html[data-theme="light"] .top-bar {
 }
 
 .cart {
-  background: var(--surface-elevated);
+  background: rgba(33, 33, 33, 0.88);
   border-radius: var(--radius-lg);
   padding: 18px;
   box-shadow: 0 18px 34px var(--shadow);
@@ -359,6 +354,8 @@ html[data-theme="light"] .top-bar {
   flex-direction: column;
   gap: 12px;
   border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .cart h2 {

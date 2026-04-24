@@ -15,6 +15,8 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
+  --motion-fast: 0.16s;
+  --motion-normal: 0.24s;
 }
 
 html[data-theme="light"] {
@@ -49,10 +51,22 @@ body {
   background: radial-gradient(circle at top, #2a2a2a 0%, var(--bg) 55%);
   color: var(--text-main);
   transition: background 0.25s ease, color 0.25s ease;
+  position: relative;
 }
 
 html[data-theme="light"] body {
   background: radial-gradient(circle at top, #ffffff 0%, #fff8e7 78%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(500px 300px at 8% -5%, rgba(244, 196, 0, 0.12), transparent 72%),
+    radial-gradient(560px 320px at 92% -10%, rgba(59, 130, 246, 0.08), transparent 72%);
+  z-index: -1;
 }
 
 .top-bar {
@@ -67,6 +81,7 @@ html[data-theme="light"] body {
   position: sticky;
   top: 0;
   z-index: 10;
+  overflow: hidden;
 }
 
 html[data-theme="light"] .top-bar {
@@ -132,6 +147,17 @@ html[data-theme="light"] .top-bar {
   min-width: 210px;
   background: var(--surface-elevated);
   color: var(--text-main);
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+}
+
+.settings input::placeholder {
+  color: var(--text-muted);
+}
+
+.settings input:focus {
+  outline: none;
+  border-color: rgba(244, 196, 0, 0.45);
+  box-shadow: 0 0 0 3px rgba(244, 196, 0, 0.16);
 }
 
 .settings button {
@@ -154,10 +180,18 @@ html[data-theme="light"] .top-bar {
   color: var(--text-main);
   font-weight: 700;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease, filter var(--motion-fast) ease;
 }
 
 .theme-toggle {
   cursor: pointer;
+}
+
+.nav-dashboard:hover,
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.26);
+  filter: saturate(1.06);
 }
 
 .layout {

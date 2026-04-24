@@ -70,7 +70,7 @@ html[data-theme="light"] body {
   border-radius: 50%;
   filter: blur(4px);
   opacity: 0.55;
-  animation: orbFloat 22s ease-in-out infinite;
+  animation: orbFloat 22s ease-in-out infinite, orbPulse 14s ease-in-out infinite;
 }
 
 .orb-gold {
@@ -107,6 +107,11 @@ html[data-theme="light"] body {
   75% { transform: translate3d(10px, -14px, 0) scale(1.04); }
 }
 
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.72; }
+}
+
 .login {
   width: min(460px, 92vw);
   display: flex;
@@ -117,16 +122,37 @@ html[data-theme="light"] body {
   z-index: 1;
 }
 
-.logo {
-  width: min(200px, 62vw);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-  transition: transform 0.3s ease;
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
 }
 
-.logo:hover {
-  transform: scale(1.03);
+.brand-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #111111;
+  background: linear-gradient(145deg, #f4c400, #d4af37);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.25);
+}
+
+.brand-copy h1 {
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.brand-copy p {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
 }
 
 .login-card {
@@ -144,6 +170,7 @@ html[data-theme="light"] body {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative;
+  animation: cardEnter 0.7s ease both;
 }
 
 .login-card::before {
@@ -155,12 +182,23 @@ html[data-theme="light"] body {
   pointer-events: none;
 }
 
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 14px;
-  color: #222;
+  color: rgba(28, 28, 28, 0.88);
 }
 
 .field span {
@@ -171,8 +209,8 @@ html[data-theme="light"] body {
 .field input {
   padding: 15px 16px;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  background: rgba(255, 255, 255, 0.76);
   font-size: 16px;
   color: #1a1a1a;
   transition: all 0.3s ease;
@@ -247,6 +285,14 @@ html[data-theme="light"] body {
   border-color: var(--secondary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(29, 53, 87, 0.15);
+}
+
+html[data-theme="light"] .brand-copy h1 {
+  color: #111111;
+}
+
+html[data-theme="light"] .brand-copy p {
+  color: #4b5563;
 }
 
 /* Mensaje de error */

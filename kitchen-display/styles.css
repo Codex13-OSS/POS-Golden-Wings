@@ -20,6 +20,7 @@ html[data-theme="light"] {
   --pending: #d4af37;
   --text: #111111;
   --border: #e5e7eb;
+  --shadow: rgba(17, 17, 17, 0.08);
 }
 
 * {
@@ -70,6 +71,12 @@ html[data-theme="light"] .top-bar {
   padding: 8px 10px;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  background: rgba(244, 196, 0, 0.16);
 }
 
 .brand {

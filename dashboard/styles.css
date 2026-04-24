@@ -58,6 +58,18 @@ html[data-theme="light"] body {
   box-shadow: 0 20px 40px var(--shadow);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  animation: sectionEnter 0.55s ease both;
+}
+
+@keyframes sectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dashboard-header {
@@ -148,6 +160,24 @@ html[data-theme="light"] body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: kpiEnter 0.5s ease both;
+}
+
+.kpi:nth-child(2) { animation-delay: 0.04s; }
+.kpi:nth-child(3) { animation-delay: 0.08s; }
+.kpi:nth-child(4) { animation-delay: 0.12s; }
+.kpi:nth-child(5) { animation-delay: 0.16s; }
+.kpi:nth-child(6) { animation-delay: 0.2s; }
+
+@keyframes kpiEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .kpi--gold { border-color: rgba(212, 175, 55, 0.45); }
@@ -264,6 +294,13 @@ th {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--gold), var(--yellow));
+  transform-origin: left;
+  animation: fillGrow 0.9s ease both;
+}
+
+@keyframes fillGrow {
+  from { transform: scaleX(0.08); opacity: 0.55; }
+  to { transform: scaleX(1); opacity: 1; }
 }
 
 .fill--gold { background: linear-gradient(90deg, #b8911e, var(--tone-gold)); }
@@ -284,6 +321,12 @@ th {
   border-radius: 16px;
   padding: 14px;
   background: rgba(212, 175, 55, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ops-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px var(--shadow);
 }
 
 .ops-card--gold { border-color: rgba(212, 175, 55, 0.35); }

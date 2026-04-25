@@ -120,7 +120,7 @@ body::before {
   width: 100%;
 }
 
-.brand-badge {
+.brand-mark {
   width: 58px;
   height: 58px;
   border-radius: 18px;
@@ -132,6 +132,19 @@ body::before {
   color: #171207;
   background: linear-gradient(155deg, #ffe384 0%, #f4c400 46%, #c79322 100%);
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.58);
+
+  overflow: hidden;
+}
+
+
+.brand-mark img {
+  width: 76%;
+  height: 76%;
+  max-width: 76%;
+  max-height: 76%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 

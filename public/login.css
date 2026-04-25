@@ -11,13 +11,13 @@
   --text-main: #f5f7fc;
   --text-soft: rgba(227, 234, 247, 0.72);
 
-  --glass: rgba(255, 255, 255, 0.14);
-  --glass-strong: rgba(255, 255, 255, 0.2);
-  --glass-border: rgba(255, 255, 255, 0.34);
-  --glass-highlight: rgba(255, 255, 255, 0.5);
+  --glass: rgba(255, 255, 255, 0.11);
+  --glass-strong: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-highlight: rgba(255, 255, 255, 0.44);
 
-  --input-glass: rgba(244, 248, 255, 0.12);
-  --input-border: rgba(243, 248, 255, 0.28);
+  --input-glass: rgba(244, 248, 255, 0.09);
+  --input-border: rgba(243, 248, 255, 0.22);
   --input-text: #f5f8ff;
   --input-placeholder: rgba(217, 226, 241, 0.56);
 
@@ -32,12 +32,12 @@ html[data-theme="light"] {
   --bg-end: #f2e8cf;
   --text-main: #15171c;
   --text-soft: rgba(43, 51, 65, 0.74);
-  --glass: rgba(255, 255, 255, 0.6);
-  --glass-strong: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.88);
-  --glass-highlight: rgba(255, 255, 255, 0.98);
-  --input-glass: rgba(255, 255, 255, 0.58);
-  --input-border: rgba(255, 255, 255, 0.84);
+  --glass: rgba(255, 255, 255, 0.42);
+  --glass-strong: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.62);
+  --glass-highlight: rgba(255, 255, 255, 0.86);
+  --input-glass: rgba(255, 255, 255, 0.34);
+  --input-border: rgba(255, 255, 255, 0.58);
   --input-text: #1c2028;
   --input-placeholder: rgba(72, 80, 92, 0.56);
   --shadow-deep: rgba(74, 58, 23, 0.16);
@@ -131,29 +131,9 @@ body::before {
   letter-spacing: -0.04em;
   color: #171207;
   background: linear-gradient(155deg, #ffe384 0%, #f4c400 46%, #c79322 100%);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.62), inset 0 -8px 14px rgba(147, 103, 9, 0.16);
 
-  overflow: hidden;
-}
-
-
-.brand-mark img {
-  width: 76%;
-  height: 76%;
-  max-width: 76%;
-  max-height: 76%;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-}
-
-
-.brand-badge img {
-  width: 72%;
-  height: 72%;
-  object-fit: contain;
-  display: block;
-  image-rendering: -webkit-optimize-contrast;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .brand-copy h1 {
@@ -178,15 +158,16 @@ body::before {
   gap: 16px;
   padding: 30px;
   border-radius: 28px;
-  background: linear-gradient(160deg, var(--glass-strong) 0%, rgba(255, 255, 255, 0.08) 56%, rgba(255, 255, 255, 0.03) 100%);
+  background: linear-gradient(158deg, rgba(255, 255, 255, 0.2) 0%, var(--glass-strong) 42%, rgba(255, 255, 255, 0.04) 100%);
   border: 1px solid var(--glass-border);
   box-shadow:
-    0 40px 74px -36px var(--shadow-deep),
-    0 14px 32px -10px var(--shadow-glow),
+    0 42px 78px -38px var(--shadow-deep),
+    0 18px 38px -16px var(--shadow-glow),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
     inset 0 1px 0 var(--glass-highlight),
-    inset 0 -22px 36px rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(30px) saturate(1.28);
-  -webkit-backdrop-filter: blur(30px) saturate(1.28);
+    inset 0 -26px 44px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(34px) saturate(1.3);
+  -webkit-backdrop-filter: blur(34px) saturate(1.3);
   animation: cardEnter 720ms cubic-bezier(0.21, 0.91, 0.33, 1) both;
 }
 
@@ -200,7 +181,7 @@ body::before {
 .login-card::before {
   inset: 0;
   border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .login-card::after {
@@ -209,8 +190,8 @@ body::before {
   top: 10px;
   height: 34%;
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0));
-  opacity: 0.58;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+  opacity: 0.5;
 }
 
 @keyframes cardEnter {
@@ -244,10 +225,10 @@ body::before {
   padding: 14px 15px;
   border-radius: 14px;
   border: 1px solid var(--input-border);
-  background: linear-gradient(150deg, var(--input-glass), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(150deg, var(--input-glass), rgba(255, 255, 255, 0.04));
   color: var(--input-text);
   font-size: 16px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), inset 0 -1px 0 rgba(15, 20, 32, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(15, 20, 32, 0.16);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: border-color 200ms ease, box-shadow 220ms ease, transform 200ms ease;
@@ -303,12 +284,12 @@ body::before {
 
 .secondary {
   border: 1px solid rgba(255, 255, 255, 0.42);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06));
   color: var(--text-main);
   font-size: 15px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.36), 0 12px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 14px 24px rgba(0, 0, 0, 0.16);
 }
 
 .error {

@@ -134,6 +134,15 @@ body::before {
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.58);
 }
 
+
+.brand-badge img {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
 .brand-copy h1 {
   font-size: clamp(27px, 4.6vw, 35px);
   letter-spacing: -0.03em;
